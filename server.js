@@ -13,14 +13,17 @@ const app = express();
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'ejs');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const uri = process.env.DB_MLAB;
 
 // APP CONFIG
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
-// app.use('/', express.static(path.join(__dirname, 'public')));
+/* move from static index.html to CRA 
+ app.use('/', express.static(path.join(__dirname, 'public')));
+*/
+
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 // ROUTES AFTER DB CONNECTION
