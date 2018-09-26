@@ -26,6 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 MongoClient.connect(process.env.DB_MLAB, (err, database) => {
 
+	if(err) return console.log(err);
+	console.log('mlab db connected');
+	
 	app.get('/', function(req, res, next) {
 	  console.log(process.env.DB_MLAB);
 	  // res.render('index', { title: 'David' });
