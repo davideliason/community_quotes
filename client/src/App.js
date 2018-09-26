@@ -5,7 +5,7 @@ class App extends Component {
   state = {quotes: []}
 
   componentDidMount() {
-    fetch('/quotes')
+    fetch('/api/quotes')
       .then(res => res.json())
       .then(quotes => this.setState({ quotes }));
   }
