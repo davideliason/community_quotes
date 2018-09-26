@@ -10,17 +10,33 @@ require('dotenv').config();
 
 const app = express();
 // TEMPLATE ENGINE
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
 
 const port = process.env.PORT || 3000;
 const uri = process.env.DB_LOCAL_URI;
 
-app.get('/', function(req, res, next) {
-  res.render('index', { title: 'David' });
+// APP CONFIG
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended:true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// ROUTES AFTER DB CONNECTION
+
+MongoClient.connect(process.env.DB_MLAB, (err, database) => {
+
+	app.get('/', function(req, res, next) {
+	  console.log(process.env.DB_MLAB);
+	  // res.render('index', { title: 'David' });
+	  res.end('hello');
+	});
+
+	app.listen(port);
 });
 
-app.listen(port);
+
+
 
 
 /*LOCAL MONGODB CONNECTION
