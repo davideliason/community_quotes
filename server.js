@@ -48,7 +48,11 @@ MongoClient.connect(uri, (err, database) => {
 	app.post('/quote', (req,res) => {
 		console.log("new quote posted");
 		db.collection('quotes').insertOne({"name" : req.body.name, "quote" : req.body.quote});
-	})
+	});
+
+	app.get('/quote/:id', (req,res) => {
+		console.log(req.params.id);
+	});
 
 	app.listen(port);
 });
