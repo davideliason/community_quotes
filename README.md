@@ -16,3 +16,5 @@ Next up was creation of form for document values and calling the POST method via
 which is then served by Express acting as API:
 ![updated JSON per API route](./result-of-POSTed-form-data.png)
 
+Following was wiring up Create React app with proxy so that the App component fetched the /quotes data from the express route, and rendered in a much nicer, ahem, format within the View.
+![Express as API, React rendering all docs](./AllDocsRenderedReact.png)
