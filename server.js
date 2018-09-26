@@ -30,7 +30,7 @@ MongoClient.connect(uri, (err, database) => {
 	console.log('mlab db connected');
 	db = database.db('positivequotes2');
 
-	app.get('/', function(req, res, next) {
+	app.get('/quotes', function(req, res, next) {
 	  // console.log(process.env.DB_MLAB);
 	  db.collection('quotes').find().toArray( (err,quotes)=>{
 	  	console.log(quotes[0]);
