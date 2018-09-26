@@ -20,7 +20,7 @@ const uri = process.env.DB_MLAB;
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'public')));
 
 // ROUTES AFTER DB CONNECTION
 
@@ -37,7 +37,7 @@ MongoClient.connect(uri, (err, database) => {
 	  	// res.render('index.ejs', { quotes: quotes})
 
 	  	// back to serving data as JSON as API
-	  	res.send(quotes);
+	  	res.json(quotes);
 	  });
 
 	  // PREVIOUS TEMPLATE ENGINE RENDERING
