@@ -20,7 +20,7 @@ const uri = process.env.DB_MLAB;
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
-app.use('/', express.static(path.join(__dirname, 'public')));
+// app.use('/', express.static(path.join(__dirname, 'public')));
 
 // ROUTES AFTER DB CONNECTION
 
