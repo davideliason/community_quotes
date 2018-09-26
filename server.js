@@ -9,12 +9,21 @@ const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 
 const app = express();
+// TEMPLATE ENGINE
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 const port = process.env.PORT || 3000;
 const uri = process.env.DB_LOCAL_URI;
 
-//middleware
+app.get('/', function(req, res, next) {
+  res.render('index', { title: 'David' });
+});
 
+app.listen(port);
+
+
+/*LOCAL MONGODB CONNECTION
 MongoClient.connect(uri, function(err, client) {
 
 	db = client.db('todos2');
@@ -31,3 +40,4 @@ app.listen(port, () => {
 })
 
 });
+*/
