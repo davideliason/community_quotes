@@ -14,7 +14,7 @@ const app = express();
 // app.set('view engine', 'ejs');
 
 const port = process.env.PORT || 3000;
-const uri = process.env.DB_LOCAL_URI;
+const uri = process.env.DB_MLAB;
 
 // APP CONFIG
 app.use(logger('dev'));
@@ -24,15 +24,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTES AFTER DB CONNECTION
 
-MongoClient.connect(process.env.DB_MLAB, (err, database) => {
+MongoClient.connect(uri, (err, database) => {
 
 	if(err) return console.log(err);
 	console.log('mlab db connected');
-	
+	db = database.db('positivequotes2');
+
 	app.get('/', function(req, res, next) {
-	  console.log(process.env.DB_MLAB);
+	  // console.log(process.env.DB_MLAB);
+	  db.collection('quotes').find().toArray( (err,quotes)=>{
+	  	console.log(quotes[0]);
+	  	res.send(quotes);
+	  });
+
+	  // PREVIOUS TEMPLATE ENGINE RENDERING
 	  // res.render('index', { title: 'David' });
-	  res.end('hello');
+	  // res.end('hello');
 	});
 
 	app.listen(port);
