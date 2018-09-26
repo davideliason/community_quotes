@@ -4,11 +4,15 @@
   "description": "MERN todo",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "start" : "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/davideliason/todo1.git"
+  },
+  "engines" : {
+    "node" : "8.11.4"
   },
   "keywords": [
     "mern"

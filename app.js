@@ -6,11 +6,12 @@ const mongo = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.get('/', (req,res) => {
-	console.log("index route");
+    res.end('hello world');
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
 	console.log("listening at 3000");
 })
