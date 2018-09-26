@@ -54,7 +54,11 @@ MongoClient.connect(uri, (err, database) => {
 		console.log(req.params.id);
 		db.collection('quotes').findOne({ _id: req.params.id}, (err, doc) => {
 			console.log(doc.name);
-			res.render('quote.ejs', { person : doc });
+			// res.render('quote.ejs', { person : doc });
+			res.json({ _id : doc._id,
+					   name : doc.name,
+					   quote : doc.quote
+					})
 		});
 	});
 
