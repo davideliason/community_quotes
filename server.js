@@ -10,8 +10,8 @@ require('dotenv').config();
 
 const app = express();
 // TEMPLATE ENGINE
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 const port = process.env.PORT || 3000;
 const uri = process.env.DB_MLAB;
@@ -34,7 +34,7 @@ MongoClient.connect(uri, (err, database) => {
 	  // console.log(process.env.DB_MLAB);
 	  db.collection('quotes').find().toArray( (err,quotes)=>{
 	  	console.log(quotes[0]);
-	  	res.send(quotes);
+	  	res.render('index.ejs', { quotes: quotes})
 	  });
 
 	  // PREVIOUS TEMPLATE ENGINE RENDERING
