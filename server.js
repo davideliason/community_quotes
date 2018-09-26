@@ -21,6 +21,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
 // app.use('/', express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // ROUTES AFTER DB CONNECTION
 
@@ -30,7 +31,7 @@ MongoClient.connect(uri, (err, database) => {
 	console.log('mlab db connected');
 	db = database.db('positivequotes2');
 
-	app.get('/quotes', function(req, res, next) {
+	app.get('/api/quotes', function(req, res, next) {
 	  // console.log(process.env.DB_MLAB);
 	  db.collection('quotes').find().toArray( (err,quotes)=>{
 	  	console.log(quotes[0]);
@@ -45,22 +46,26 @@ MongoClient.connect(uri, (err, database) => {
 	  // res.end('hello');
 	});
 
-	app.post('/quote', (req,res) => {
-		console.log("new quote posted");
-		db.collection('quotes').insertOne({"_id" : req.body.name + req.body.quote, "name" : req.body.name, "quote" : req.body.quote});
-	});
+	// app.post('/quote', (req,res) => {
+	// 	console.log("new quote posted");
+	// 	db.collection('quotes').insertOne({"_id" : req.body.name + req.body.quote, "name" : req.body.name, "quote" : req.body.quote});
+	// });
 
-	app.get('/quote/:id', (req,res) => {
-		console.log(req.params.id);
-		db.collection('quotes').findOne({ _id: req.params.id}, (err, doc) => {
-			console.log(doc.name);
-			// res.render('quote.ejs', { person : doc });
-			res.json({ _id : doc._id,
-					   name : doc.name,
-					   quote : doc.quote
-					})
-		});
-	});
+	// app.get('/quote/:id', (req,res) => {
+	// 	console.log(req.params.id);
+	// 	db.collection('quotes').findOne({ _id: req.params.id}, (err, doc) => {
+	// 		console.log(doc.name);
+	// 		// res.render('quote.ejs', { person : doc });
+	// 		res.json({ _id : doc._id,
+	// 				   name : doc.name,
+	// 				   quote : doc.quote
+	// 				})
+	// 	});
+	// });
+
+	app.get('*', (req, res) => {
+       res.sendFile(path.join(__dirname+'/client/build/index.html'));
+     });
 
 	app.listen(port);
 });
