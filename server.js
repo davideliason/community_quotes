@@ -10,8 +10,8 @@ require('dotenv').config();
 
 const app = express();
 // TEMPLATE ENGINE
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 const port = process.env.PORT || 3000;
 const uri = process.env.DB_MLAB;
@@ -54,7 +54,7 @@ MongoClient.connect(uri, (err, database) => {
 		console.log(req.params.id);
 		db.collection('quotes').findOne({ _id: req.params.id}, (err, doc) => {
 			console.log(doc.name);
-			res.json(doc);
+			res.render('quote.ejs', { person : doc });
 		});
 	});
 
