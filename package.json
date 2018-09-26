@@ -1,0 +1,31 @@
+{
+  "name": "express-server",
+  "version": "0.1.0",
+  "description": "MERN todo",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davideliason/todo1.git"
+  },
+  "keywords": [
+    "mern"
+  ],
+  "author": "David Eliason",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davideliason/todo1/issues"
+  },
+  "homepage": "https://github.com/davideliason/todo1#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.6",
+    "mongoose": "^5.2.17",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.4"
+  }
+}
