@@ -51,8 +51,19 @@ class InputForm extends Component {
       <div>
         {this.state.name} is name
         <form action="/quote" method="POST" onSubmit={this.handleSubmit}>
-          <input type="text" ref="data" placeholder="name"/>
-          <button type='submit'  >save</button>
+           <input
+                type="text"
+                placeholder="name"
+                value={this.state.name}
+                onChange={this.handleNameChange}
+            />
+            <input
+                type="text"
+                placeholder="quote"
+                value={this.state.quote}
+                onChange={this.handQuoteChange}
+            />
+          <button type='submit'>save</button>
          </form>
         }
 
