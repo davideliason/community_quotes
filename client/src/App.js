@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import InputForm from './InputForm.js';
+import UpdateForm from './UpdateForm.js';
+
 
 
 class App extends Component {
@@ -20,6 +22,7 @@ class App extends Component {
           <div key={quote.id}>{quote.name} : {quote.quote}</div>
         )}
         <InputForm />
+        // <UpdateForm />
      
       </div>
     );

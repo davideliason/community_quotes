@@ -49,10 +49,26 @@ MongoClient.connect(uri, (err, database) => {
 	  // res.end('hello');
 	});
 
+	app.get('/findQuote/:name', (req,res) => {
+		db.collection('quotes').findOne({name : req.params.name})
+		.then(function(doc){
+			console.log(doc);
+		});
+	});
+
 	app.post('/newQuote', (req,res) => {
 		console.log("new quote posted");
 		db.collection('quotes').insertOne({"_id" : req.body.name + req.body.quote, "name" : req.body.name, "quote" : req.body.quote});
 	});
+
+	app.put('/updateQuote', (req,res) => {
+		db.collection('quotes').updateOne({"_id" : 'ddddddddddddd' }, { $set : { quote : req.body.quote} }, (err, res) => {
+			if(err) throw err;
+			console.log('one doc updated');
+
+		});
+
+	})
 
 	// app.get('/quote/:id', (req,res) => {
 	// 	console.log(req.params.id);
