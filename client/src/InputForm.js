@@ -4,6 +4,7 @@ class InputForm extends Component {
 
   handleSubmit = (e) => {
   	e.preventDefault();
+  	window.location.reload();
   }
 
   render() {
