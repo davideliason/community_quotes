@@ -4,6 +4,10 @@
 
 ## What
 
+This is a single page app that uses a single machine to both serve the React files and also serving API requests. It does this by the use of a proxy script. Express runs on a different port than react. React fetches the data that express serves at the API endpoint, saves it to local component state, and renders.
+
+## How
+
 First, created mongodb connection using local mongodb instance, populating document via mongo. Results served via express as RESTful API.
 ![RESTful JSON](./expressAPI.png)
 
