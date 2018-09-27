@@ -49,7 +49,7 @@ MongoClient.connect(uri, (err, database) => {
 	  // res.end('hello');
 	});
 
-	app.post('/quote', (req,res) => {
+	app.post('/newQuote', (req,res) => {
 		console.log("new quote posted");
 		db.collection('quotes').insertOne({"_id" : req.body.name + req.body.quote, "name" : req.body.name, "quote" : req.body.quote});
 	});

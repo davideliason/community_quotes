@@ -6,8 +6,8 @@ class InputForm extends Component {
     super(props);
 
     this.state = {
-      name : 'blue2',
-      quote : 'bluequote2'
+      name : '',
+      quote : ''
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -49,7 +49,6 @@ class InputForm extends Component {
   render() {
     return (
       <div>
-        {this.state.name} is name
         <form action="/quote" method="POST" onSubmit={this.handleSubmit}>
            <input
                 type="text"
@@ -65,11 +64,9 @@ class InputForm extends Component {
             />
           <button type='submit'>save</button>
          </form>
-        }
-
       </div>
     );
-  } 
+  }
 
 }
 
