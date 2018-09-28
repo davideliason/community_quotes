@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import InputForm from './InputForm.js';
 import UpdateForm from './UpdateForm.js';
+import SearchForm from './SearchForm.js';
+
 
 
 
@@ -22,6 +24,8 @@ class App extends Component {
           <div key={quote.id}>{quote.name} : {quote.quote}</div>
         )}
         <InputForm />
+        <SearchForm />
+
         // <UpdateForm />
      
       </div>

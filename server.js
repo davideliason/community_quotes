@@ -37,7 +37,6 @@ MongoClient.connect(uri, (err, database) => {
 	app.get('/api/quotes', function(req, res, next) {
 	  // console.log(process.env.DB_MLAB);
 	  db.collection('quotes').find().toArray( (err,quotes)=>{
-	  	console.log(quotes[0]);
 	  	// res.render('index.ejs', { quotes: quotes})
 
 	  	// back to serving data as JSON as API
@@ -50,25 +49,32 @@ MongoClient.connect(uri, (err, database) => {
 	});
 
 	app.get('/findQuote/:name', (req,res) => {
-		db.collection('quotes').findOne({name : req.params.name})
-		.then(function(doc){
-			console.log(doc);
+		db.collection('quotes').findOne({name : req.params.name}, function(err,result) {
+			if(err) throw err;
+			console.log(result.name);
 		});
 	});
 
 	app.post('/newQuote', (req,res) => {
-		console.log("new quote posted");
-		db.collection('quotes').insertOne({"_id" : req.body.name + req.body.quote, "name" : req.body.name, "quote" : req.body.quote});
+		db.collection('quotes').insertOne({"name" : req.body.name, "quote" : req.body.quote});
+		console.log("new quote posted" + req.body.name);
 	});
 
-	app.put('/updateQuote', (req,res) => {
-		db.collection('quotes').updateOne({"_id" : 'ddddddddddddd' }, { $set : { quote : req.body.quote} }, (err, res) => {
+	// app.put('/updateQuote', (req,res) => {
+	// 	db.collection('quotes').updateOne({"_id" : '' }, { $set : { quote : req.body.quote} }, (err, res) => {
+	// 		if(err) throw err;
+	// 		console.log('one doc updated');
+
+	// 	});
+
+	// })
+
+	app.delete('/quotes/:name', (req, res) => {
+		db.collection('quotes').deleteOne({ "name" : "z100"}, (err, obj) => {
 			if(err) throw err;
-			console.log('one doc updated');
-
+			console.log('1 doc deleted');
 		});
-
-	})
+	});
 
 	// app.get('/quote/:id', (req,res) => {
 	// 	console.log(req.params.id);
