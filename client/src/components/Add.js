@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Button} from 'react-bootstrap';
+import Modal from 'react-modal';
 
 class Add extends Component {
 
@@ -8,12 +9,23 @@ class Add extends Component {
 
     this.state = {
       name : '',
-      quote : ''
+      quote : '',
+      showModal: false
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handQuoteChange = this.handQuoteChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal(){
+    this.setState({showModal: true});
+  }
+
+  handleCloseModal(){
+    this.setState({showModal: false});
   }
 
   handleNameChange(e){
