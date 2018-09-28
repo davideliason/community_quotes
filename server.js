@@ -60,14 +60,14 @@ MongoClient.connect(uri, (err, database) => {
 		console.log("new quote posted" + req.body.name);
 	});
 
-	// app.put('/updateQuote', (req,res) => {
-	// 	db.collection('quotes').updateOne({"_id" : '' }, { $set : { quote : req.body.quote} }, (err, res) => {
-	// 		if(err) throw err;
-	// 		console.log('one doc updated');
+	app.put('/updateQuote', (req,res) => {
+		db.collection('quotes').updateOne({"name" : "ooohasdfa" }, { $set : { quote : "new quote here"} }, (err, res) => {
+			if(err) throw err;
+			console.log('one doc updated');
 
-	// 	});
+		});
 
-	// })
+	})
 
 	app.delete('/quotes', (req, res) => {
 		db.collection('quotes').deleteOne({ "name" : "z100"}, (err, obj) => {
