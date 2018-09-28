@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import {Button} from 'react-bootstrap';
+
 
 class Update extends Component {
    constructor(props) {
@@ -59,20 +61,43 @@ class Update extends Component {
             .catch(error => console.log(error));
     }
 
-    // componentDidMount(){
-    //   this.setState({
-    //     id: this.props._id,
-    //     name: this.props.name,
-    //     quote: this.props.quote
-    //   })
-    // }
+    componentDidMount(){
+      this.setState({
+        id: this.props._id,
+        name: this.props.name,
+        quote: this.props.quote
+      })
+    }
 
 
   render() {
     return (
       <div>
-        <h3>Update Quote</h3>
-        <p>{this.state.id} : {this.state.name} : {this.state.quote}</p>
+        <h5>Update Quote</h5>
+
+         <Button bsStyle="success" bsSize="small" onClick={this.handleOpenModal}><span className="glyphicon glyphicon-edit"></span></Button>
+          <Modal 
+            isOpen={this.state.showModal} 
+            contentLabel="name">
+           <h3>Update a quote</h3>
+           <form action="/newQuote" method="POST" onSubmit={this.handleSubmit}>
+           <input
+                type="text"
+                placeholder="your name"
+                value={this.state.name}
+                onChange={this.handleNameChange}
+            />
+            <input
+                type="text"
+                placeholder="enter a quote"
+                value={this.state.quote}
+                onChange={this.handQuoteChange}
+            />
+          <Button bsStyle="info" bsSize="small" type='submit'>save</Button>
+         </form>
+           <Button bsStyle="warning" bsSize="small" onClick={this.handleCloseModal}>close</Button>
+         </Modal>
+
       </div>
     );
   }
