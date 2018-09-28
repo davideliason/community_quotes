@@ -68,7 +68,7 @@ class Add extends Component {
   render() {
     return (
       <div>
-       <Button bsStyle="success" onClick={this.handleOpenModal}>Add Quote</Button>
+       <Button bsStyle="success" bsSize="small" onClick={this.handleOpenModal}><span className="glyphicon glyphicon-plus"></span></Button>
          <Modal 
             isOpen={this.state.showModal} 
             contentLabel="name">
@@ -86,9 +86,9 @@ class Add extends Component {
                 value={this.state.quote}
                 onChange={this.handQuoteChange}
             />
-          <Button bsStyle="info" type='submit'>save</Button>
+          <Button bsStyle="info" bsSize="small" type='submit'>save</Button>
          </form>
-           <Button bsStyle="warning" onClick={this.handleCloseModal}>close</Button>
+           <Button bsStyle="warning" bsSize="small" onClick={this.handleCloseModal}>close</Button>
          </Modal>
 
         
