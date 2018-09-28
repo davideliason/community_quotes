@@ -8,9 +8,9 @@ class Update extends Component {
     super(props);
 
     this.state = {
-      id : 'id',
-      name : 'name',
-      quote : 'quote',
+      id : '',
+      name : '',
+      quote : '',
       showModal: false
     };
 
@@ -22,11 +22,11 @@ class Update extends Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-    handleOpenModal(){
+   handleOpenModal(){
     this.setState({showModal: true});
   }
 
-  handleCloseModal(){
+   handleCloseModal(){
     this.setState({showModal: false});
   }
 
@@ -48,7 +48,7 @@ class Update extends Component {
      };
 
     fetch('/updateQuote', {
-      method : 'POST',
+      method : 'PUT',
       headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -80,7 +80,8 @@ class Update extends Component {
             isOpen={this.state.showModal} 
             contentLabel="name">
            <h3>Update a quote</h3>
-           <form action="/newQuote" method="POST" onSubmit={this.handleSubmit}>
+
+           <form action="/updateQuote" method="PUT" onSubmit={this.handleSubmit}>
            <input
                 type="text"
                 placeholder="your name"
