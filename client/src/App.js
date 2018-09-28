@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import InputForm from './InputForm.js';
+import Add from './Add.js';
 import UpdateForm from './UpdateForm.js';
 import SearchForm from './SearchForm.js';
 import Quotes from './Quotes.js';
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="App">
        
-        <InputForm />
+        <Add />
         <Quotes />
 
       </div>
