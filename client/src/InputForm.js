@@ -57,13 +57,13 @@ class InputForm extends Component {
         <form action="/newQuote" method="POST" onSubmit={this.handleSubmit}>
            <input
                 type="text"
-                placeholder="name"
+                placeholder="enter your name"
                 value={this.state.name}
                 onChange={this.handleNameChange}
             />
             <input
                 type="text"
-                placeholder="quote"
+                placeholder="enter a quote"
                 value={this.state.quote}
                 onChange={this.handQuoteChange}
             />
