@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
+import Modal from 'react-modal';
 
-
-class UpdateForm extends Component {
+class Update extends Component {
    constructor(props) {
     super(props);
 
     this.state = {
-      name : '',
-      quote : ''
+      id : 'id',
+      name : 'name',
+      quote : 'quote',
+      showModal: false
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handQuoteChange = this.handQuoteChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+    handleOpenModal(){
+    this.setState({showModal: true});
+  }
+
+  handleCloseModal(){
+    this.setState({showModal: false});
   }
 
    handleNameChange(e){
@@ -25,7 +38,7 @@ class UpdateForm extends Component {
     this.setState({quote : e.target.value});
    }
 
-    handleSubmit(e) {
+   handleSubmit(e) {
     e.preventDefault();
     let newQuote = {
       name : this.state.name,
@@ -46,14 +59,23 @@ class UpdateForm extends Component {
             .catch(error => console.log(error));
     }
 
+    // componentDidMount(){
+    //   this.setState({
+    //     id: this.props._id,
+    //     name: this.props.name,
+    //     quote: this.props.quote
+    //   })
+    // }
+
 
   render() {
     return (
       <div>
         <h3>Update Quote</h3>
+        <p>{this.state.id} : {this.state.name} : {this.state.quote}</p>
       </div>
     );
   }
 }
 
-export default UpdateForm;
+export default Update;
