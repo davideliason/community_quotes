@@ -16,6 +16,7 @@ class Add extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handQuoteChange = this.handQuoteChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
@@ -67,8 +68,12 @@ class Add extends Component {
   render() {
     return (
       <div>
-       <Button bsStyle="success">click</Button>
-        <form action="/newQuote" method="POST" onSubmit={this.handleSubmit}>
+       <Button bsStyle="success" onClick={this.handleOpenModal}>Add Quote</Button>
+         <Modal 
+            isOpen={this.state.showModal} 
+            contentLabel="name">
+           <h3>subtitle</h3>
+           <form action="/newQuote" method="POST" onSubmit={this.handleSubmit}>
            <input
                 type="text"
                 placeholder="enter your name"
@@ -83,6 +88,10 @@ class Add extends Component {
             />
           <button type='submit'>save</button>
          </form>
+           <button onClick={this.handleCloseModal}>close modal</button>
+         </Modal>
+
+        
       </div>
     );
   }
