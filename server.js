@@ -69,7 +69,7 @@ MongoClient.connect(uri, (err, database) => {
 
 	// })
 
-	app.delete('/quotes/:name', (req, res) => {
+	app.delete('/quotes', (req, res) => {
 		db.collection('quotes').deleteOne({ "name" : "z100"}, (err, obj) => {
 			if(err) throw err;
 			console.log('1 doc deleted');
