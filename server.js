@@ -58,6 +58,7 @@ MongoClient.connect(uri, (err, database) => {
 	app.post('/newQuote', (req,res) => {
 		db.collection('quotes').insertOne({"name" : req.body.name, "quote" : req.body.quote});
 		console.log("new quote posted" + req.body.name);
+		res.send('name added successfully');
 	});
 
 	app.put('/updateQuote', (req,res) => {
@@ -69,8 +70,8 @@ MongoClient.connect(uri, (err, database) => {
 
 	})
 
-	app.delete('/quotes', (req, res) => {
-		db.collection('quotes').deleteOne({ "name" : "z100"}, (err, obj) => {
+	app.delete('/quotes/delete/:id', (req, res) => {
+		db.collection('quotes').deleteOne({_id : req.params.id}, (err, obj) => {
 			if(err) throw err;
 			console.log('1 doc deleted');
 		});
