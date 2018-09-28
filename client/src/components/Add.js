@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button} from 'react-bootstrap';
 
 class Add extends Component {
 
@@ -54,6 +55,7 @@ class Add extends Component {
   render() {
     return (
       <div>
+       <Button bsStyle="success">click</Button>
         <form action="/newQuote" method="POST" onSubmit={this.handleSubmit}>
            <input
                 type="text"
