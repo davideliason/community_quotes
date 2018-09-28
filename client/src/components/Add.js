@@ -72,11 +72,11 @@ class Add extends Component {
          <Modal 
             isOpen={this.state.showModal} 
             contentLabel="name">
-           <h3>subtitle</h3>
+           <h3>Add a quote</h3>
            <form action="/newQuote" method="POST" onSubmit={this.handleSubmit}>
            <input
                 type="text"
-                placeholder="enter your name"
+                placeholder="your name"
                 value={this.state.name}
                 onChange={this.handleNameChange}
             />
@@ -86,9 +86,9 @@ class Add extends Component {
                 value={this.state.quote}
                 onChange={this.handQuoteChange}
             />
-          <button type='submit'>save</button>
+          <Button bsStyle="info" type='submit'>save</Button>
          </form>
-           <button onClick={this.handleCloseModal}>close modal</button>
+           <Button bsStyle="warning" onClick={this.handleCloseModal}>close</Button>
          </Modal>
 
         
