@@ -6,8 +6,8 @@ class InputForm extends Component {
     super(props);
 
     this.state = {
-      name : 'testname',
-      quote : 'testquote'
+      name : '',
+      quote : ''
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -41,9 +41,14 @@ class InputForm extends Component {
       mode: "cors",
       body: JSON.stringify(newQuote)
         })
-            .then(response => response.json())
+            .then(response => response.json() )
             .then(newQuote => console.log("new quote saved" + newQuote))
             .catch(error => console.log(error));
+
+      this.setState({
+              name: "",
+              quote: ""
+            });
     }
 
   render() {
