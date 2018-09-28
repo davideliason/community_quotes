@@ -43,6 +43,7 @@ class Update extends Component {
    handleSubmit(e) {
     e.preventDefault();
     let newQuote = {
+      id : this.state.id,
       name : this.state.name,
       quote : this.state.quote
      };
@@ -63,9 +64,9 @@ class Update extends Component {
 
     componentDidMount(){
       this.setState({
-        id: this.props._id,
-        name: this.props.name,
-        quote: this.props.quote
+        id: this.props.id
+        // name: this.props.name,
+        // quote: this.props.quote
       })
     }
 

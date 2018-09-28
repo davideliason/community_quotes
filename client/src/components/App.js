@@ -30,7 +30,7 @@ class App extends Component {
   	return (
   		<div>
              <Add />
-             <Update />
+             <Update id="a3a3" />
 
   			 <h1>Quotes</h1>
        		 {this.state.quotes.map(quote =>

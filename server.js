@@ -62,7 +62,7 @@ MongoClient.connect(uri, (err, database) => {
 	});
 
 	app.put('/updateQuote', (req,res) => {
-		db.collection('quotes').updateOne({"name" : req.body.name }, { $set : { quote : req.body.quote } }, (err, res) => {
+		db.collection('quotes').updateOne({ _id : req.body.id }, { $set : { quote : req.body.quote } }, (err, res) => {
 			if(err) throw err;
 			console.log('one doc updated');
 
