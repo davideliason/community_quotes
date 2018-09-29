@@ -56,7 +56,13 @@ MongoClient.connect(uri, (err, database) => {
 	});
 
 	app.post('/newQuote', (req,res) => {
-		db.collection('quotes').insertOne({"name" : req.body.name, "quote" : req.body.quote});
+		db.collection('quotes').insertOne(
+			{
+			 "_id" : req.body.name + req.body.quote,
+			 "name" : req.body.name,
+			 "quote" : req.body.quote
+			 });
+		
 		console.log("new quote posted" + req.body.name);
 		res.send('name added successfully');
 	});

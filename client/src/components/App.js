@@ -33,7 +33,7 @@ class App extends Component {
 
   			 <h1>Quotes</h1>
        		 {this.state.quotes.map(quote =>
-               <div key={quote._id}> id: {quote._id} : {quote.name} : "{quote.quote}" <Update quote={quote} /></div>
+               <div key={quote._id}> "{quote.quote}" - {quote.name} <Update quote={quote} /></div>
        		 )}
         </div>
       )}
