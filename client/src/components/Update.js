@@ -74,7 +74,7 @@ class Update extends Component {
   render() {
     return (
       <div>
-        <h5>Update Quote</h5>
+        <h5>Update a Quote</h5>
 
          <Button bsStyle="success" bsSize="small" onClick={this.handleOpenModal}><span className="glyphicon glyphicon-edit"></span></Button>
           <Modal 
