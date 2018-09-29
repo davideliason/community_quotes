@@ -64,7 +64,7 @@ class Update extends Component {
 
     componentDidMount(){
       this.setState({
-        id: this.props.quote.id,
+        id: this.props.quote._id,
         name: this.props.quote.name,
         quote: this.props.quote.quote
       })
