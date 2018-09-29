@@ -3,6 +3,7 @@ import Add from './Add.js';
 import SearchForm from './SearchForm.js';
 import Quotes from './Quotes.js';
 import Update from './Update.js';
+import Delete from './Delete.js';
 
 class App extends Component {
  
@@ -29,11 +30,11 @@ class App extends Component {
   render() {
   	return (
   		<div>
-             <Add />
+         <Add />
 
   			 <h1>Quotes</h1>
        		 {this.state.quotes.map(quote =>
-               <div key={quote._id}> "{quote.quote}" - {quote.name} <Update quote={quote} /></div>
+               <div key={quote._id}> "{quote.quote}" - {quote.name} <Update quote={quote} /><Delete id={quote._id} /></div>
        		 )}
         </div>
       )}
