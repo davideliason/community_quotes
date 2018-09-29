@@ -91,7 +91,7 @@ class Update extends Component {
             />
             <input
                 type="text"
-                placeholder="enter a quote"
+                placeholder="enter new quote"
                 value={this.state.quote}
                 onChange={this.handQuoteChange}
             />
