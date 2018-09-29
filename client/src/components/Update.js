@@ -64,7 +64,7 @@ class Update extends Component {
 
     componentDidMount(){
       this.setState({
-        id: this.props.quote.id,
+        id: this.props.quote._id,
         name: this.props.quote.name,
         quote: this.props.quote.quote
       })
@@ -82,16 +82,16 @@ class Update extends Component {
             contentLabel="name">
            <h3>Update a quote</h3>
 
-           <form action="/updateQuote" method="PUT" onSubmit={this.handleSubmit}>
+           <form action="/updateQuote" onSubmit={this.handleSubmit}>
            <input
                 type="text"
-                placeholder="your name"
+                placeholder="enter name"
                 value={this.state.name}
                 onChange={this.handleNameChange}
             />
             <input
                 type="text"
-                placeholder="enter a quote"
+                placeholder="enter quote"
                 value={this.state.quote}
                 onChange={this.handQuoteChange}
             />
