@@ -24,14 +24,17 @@ class Delete extends Component {
      this.delete(this);
     }
 
-
+ 
 
   delete(e) {
    
     fetch('/quotes/delete/' + this.state.id, { method : 'DELETE' }).then( (response)=>{
-      console.log(response)
+      console.log(response);
+      window.location.reload();
       });
     }
+
+
 
   render() {
     return (

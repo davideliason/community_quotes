@@ -68,7 +68,6 @@ class Add extends Component {
   render() {
     return (
       <div>
-       <h5>Add Quote</h5>
        <Button bsStyle="success" bsSize="small" onClick={this.handleOpenModal}><span className="glyphicon glyphicon-plus"></span></Button>
          <Modal 
             isOpen={this.state.showModal} 
